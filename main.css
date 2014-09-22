@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  margin: 10px;
+  font-family: helvetica;
+  color: #444;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+p {
+}
+a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+footer {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+#instructions {
+  margin-bottom: 20px;
+}
+/* ----- CIDR Calculator ----- */
+#cidr-input{
+  height: 2em;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 100% ;
+  font-size: 1em;
+  text-align: center;
+}
+
+#cidr-output {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ----- Unix Calculator -----  */
+.unix-table tr td {
+  text-align: center;
+  padding: 10px 4px;
+}
+
+.unix-table input[type="checkbox"] {
+  transform: scale(2.0);
+  -webkit-transform: scale(2.0);
+  -moz-transform: scale(2.0);
+}
+
+.unix-button, .unix-type {
+  width: 60px;
+}
+
+#unix-output {
+  margin-top: 20px;
+}
+
+#unix-output code {
+  font-size: 1.35em;
+}
+

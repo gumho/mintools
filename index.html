@@ -1,49 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="cidrApp">
+<html ng-app="minApp" ng-controller="AppCtrl">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Minimal CIDR Calculator</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      margin: 10px;
-      font-family: helvetica;
-      color: #444 ;
-    }
-    h1 {
-      font-weight: normal;
-      letter-spacing: -1px;
-    }
-    input {
-      height: 2em;
-      margin-top: 20px;
-      border-radius: 5px;
-      border-width: 1px;
-      width: 100% ;
-      font-size: 1em;
-      text-align: center;
-    }
-    #output {
-      margin-top: 10px;
-      text-align: center;
-    }
-    .test {
-      font-weight: bold;
-    }
-  </style>
-  <script src="cidr.js"></script>
+  <title>Minimal Tools</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
   <script src="angular.js"></script>
+  <script src="angular-route.js"></script>
+  <script src="cidr.js"></script>
   <script src="controllers.js"></script>
 </head>
 <body>
-  <div ng-controller="CidrCtrl">
-    <h1>Minimal CIDR Calculator</h1>
-    <p id="instructions">Instructions: Enter a CIDR IP to calculate the IP range</p>
-    <input placeholder="e.g. 192.168.1.0/24" autofocus ng-change="calculate(input)" ng-model="input"/>
-    <p id="output">{{output}}</p>
+  <div id="main">
+    <div ng-view></div>
   </div>
+  <footer>
+    <ul>
+      <li><a href="/#/cidr-calculator">CIDR Calculator</a></li>
+      <li><a href="/#/unix-permissions-calculator">Unix Permissions Calculator</a></li>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </footer>
 </body>
 </html>

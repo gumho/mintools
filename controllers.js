@@ -1,6 +1,68 @@
-var cidrApp = angular.module('cidrApp', []);
+var minApp = angular.module('minApp', ['ngRoute']);
 
-cidrApp.controller('CidrCtrl', function ($scope) {
+minApp.config(function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'home.html',
+      controller: 'AppCtrl'
+    })
+    .when('/cidr-calculator', {
+      templateUrl: 'cidr-calculator.html',
+      controller: 'CidrCtrl'
+    })
+    .when('/unix-permissions-calculator', {
+      templateUrl: 'unix-permissions-calculator.html',
+      controller: 'UnixCtrl'
+    })
+});
+
+minApp.controller('AppCtrl', function($scope) {});
+
+minApp.controller('UnixCtrl', function($scope) {
+  $scope.perm = [false, false, false, false, false, false, false, false, false];
+
+  function setUnset(bits) {
+    var num_trues = 0;
+    for(var i in bits) {
+      var val = bits[i];
+      if($scope.perm[val]) {
+        num_trues += 1;
+      };
+    }
+
+    if(num_trues == 3) {
+      for(var i in bits) {
+        var idx = bits[i];
+        $scope.perm[idx] = false;
+      }
+    }
+    else {
+      for(var i in bits) {
+        var idx = bits[i];
+        $scope.perm[idx] = true;
+      }
+    }
+  }
+
+  $scope.selectRead = function() { setUnset([0, 3, 6]); }
+  $scope.selectWrite = function() { setUnset([1, 4, 7]); }
+  $scope.selectExecute = function() { setUnset([2, 5, 8]); }
+  $scope.selectUser = function() { setUnset([0, 1, 2]); }
+  $scope.selectGroup = function() { setUnset([3, 4, 5]); }
+  $scope.selectOther = function() { setUnset([6, 7, 8]); }
+
+  $scope.outputOctal = function() {
+    var bitmask = $scope.perm.map(function(b) { return b ? 1 : 0});
+    var output = '';
+    output += parseInt(bitmask.slice(0, 3).join(''), 2);
+    output += parseInt(bitmask.slice(3, 6).join(''), 2);
+    output += parseInt(bitmask.slice(6, 9).join(''), 2);
+    return output;
+  }
+
+});
+
+minApp.controller('CidrCtrl', function($scope) {
   $scope.calculate = function(input) {
     if(input == '') {
       $scope.output = '';
@@ -31,5 +93,4 @@ cidrApp.controller('CidrCtrl', function ($scope) {
 
     $scope.output = range.start + ' - ' + range.end;
   }
-
 });

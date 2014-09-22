@@ -1,0 +1,31 @@
+<h1>Minimal Unix Permissions Calculator</h1>
+<p id="instructions">Instructions: Select user permissions to calculate Unix permissions in octal notation</p>
+
+<table class="unix-table">
+  <tr>
+    <td></td>
+    <td><button class="unix-type" type="button" ng-click="selectRead()">Read</button></td>
+    <td><button class="unix-type" type="button" ng-click="selectWrite()">Write</button></td>
+    <td><button class="unix-type" type="button" ng-click="selectExecute()">Execute</button></td>
+  </tr>
+  <tr>
+    <td><button class="unix-button" type="button" ng-click="selectUser()">User</button></td>
+    <td><input type="checkbox" id="ur" ng-model="perm[0]"/></td>
+    <td><input type="checkbox" id="uw" ng-model="perm[1]"/></td>
+    <td><input type="checkbox" id="ux" ng-model="perm[2]"/></td>
+  </tr>
+  <tr>
+    <td><button class="unix-button" type="button" ng-click="selectGroup()">Group</button></td>
+    <td><input type="checkbox" id="gr" ng-model="perm[3]" /></td>
+    <td><input type="checkbox" id="gw" ng-model="perm[4]" /></td>
+    <td><input type="checkbox" id="gx" ng-model="perm[5]" /></td>
+  </tr>
+  <tr>
+    <td><button class="unix-button" type="button" ng-click="selectOther()">Other</button></td>
+    <td><input type="checkbox" id="or" ng-model="perm[6]" /></td>
+    <td><input type="checkbox" id="ow" ng-model="perm[7]" /></td>
+    <td><input type="checkbox" id="ox" ng-model="perm[8]" /></td>
+  </tr>
+</table>
+
+<p id="unix-output"><strong>Example usage:</strong> chmod {{outputOctal()}} file.txt</p>
