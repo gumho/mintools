@@ -1,17 +1,17 @@
-var minApp = angular.module('minApp', ['ngRoute']);
+var minApp = angular.module('minApp', ['ngRoute', 'angulartics', 'angulartics.google.analytics']);
 
 minApp.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'home.html',
+      templateUrl: 'templates/home.html',
       controller: 'AppCtrl'
     })
     .when('/cidr-calculator', {
-      templateUrl: 'cidr-calculator.html',
+      templateUrl: 'templates/cidr-calculator.html',
       controller: 'CidrCtrl'
     })
     .when('/unix-permissions-calculator', {
-      templateUrl: 'unix-permissions-calculator.html',
+      templateUrl: 'templates/unix-permissions-calculator.html',
       controller: 'UnixCtrl'
     })
 });
